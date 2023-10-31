@@ -1,0 +1,23 @@
+﻿@page
+@model BebraMusic.UI.Pages.Albums.Index
+
+
+<div class="mx-4">
+    <table class="table table-bordered table-striped table-hover table-sm">
+        <thead class="table-dark">
+        <tr class="table-responsive">
+            <th>Id</th>
+            <th>Альбомы</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var album in Model.Albums)
+        {
+            <tr class="table-responsive text-start">
+                <td>@album.Id</td>
+                <td>@album.Title</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

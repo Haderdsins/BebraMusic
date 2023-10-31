@@ -2,20 +2,20 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace BebraMusic.UI.DataBase;
+ 
+public sealed class BebraMusicDbContext : DbContext
+{
+    // Свойство DbSet представляет собой коллекцию объектов, которая сопоставляется с определенной таблицей в базе данных. 
+    //dbset - свойство, Author - указатель на класс, authors - там будет находиться выгрузка авторов
+    public DbSet<Author> Authors { get; set; }
+    public DbSet<Album> Albums { get; set; }
+    public DbSet<Collection> Collections { get; set; }
+    public DbSet<Genre> Genres { get; set; }
+    public DbSet<Song> Songs { get; set; }
 
-public class BebraMusicDbContext
-{
-    
-}
- 
-public class ApplicationContext : DbContext
-{
-    public DbSet<Author> Users => Set<Author>();
-    public ApplicationContext() => Database.EnsureCreated();
- 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public BebraMusicDbContext(DbContextOptions<BebraMusicDbContext> options)
+        : base(options)
     {
-        optionsBuilder.UseNpgsql("Host=localhost;Port=15432;Database=music_db;Username=postgres;Password=postgres");
+        Database.EnsureCreated();
     }
-    
 }

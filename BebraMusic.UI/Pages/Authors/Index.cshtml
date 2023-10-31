@@ -1,0 +1,22 @@
+﻿@page
+@model BebraMusic.UI.Pages.Authors.Index
+
+<div class="mx-4">
+    <table class="table table-bordered table-striped table-hover table-sm">
+        <thead class="table-dark">
+        <tr class="table-responsive">
+            <th>Id</th>
+            <th>Наименование</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var author in Model.Authors)
+        {
+            <tr class="table-responsive text-start">
+                <td>@author.Id</td>
+                <td>@author.Name</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

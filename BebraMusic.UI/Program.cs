@@ -1,7 +1,14 @@
+using BebraMusic.UI.DataBase;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// получаем строку подключения из файла конфигурации
+var connection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<BebraMusicDbContext>(options => options.UseNpgsql(connection));
 
 var app = builder.Build();
 
@@ -13,13 +20,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+app.UseStatusCodePages();
+
+// добавляем поддержку маршрутизации для Razor Pages
+app.MapRazorPages();
+
 app.UseStaticFiles();
 
 app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapRazorPages();
+app.MapControllers();
 
 app.Run();
