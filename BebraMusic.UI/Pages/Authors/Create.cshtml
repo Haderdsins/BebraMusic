@@ -1,0 +1,24 @@
+﻿@page
+@model BebraMusic.UI.Pages.Authors.Create
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div>
+    <form method="Post">
+        <input asp-for="Author.Id"/>
+        <input asp-for="Author.Name"/>
+        <input class="btn" type="submit" value="Add"/>
+        
+    </form>
+</div>
+</body>
+</html>

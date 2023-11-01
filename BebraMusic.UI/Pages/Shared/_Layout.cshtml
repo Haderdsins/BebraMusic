@@ -22,19 +22,19 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-<div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-            Меню
-        </button>   
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" href="/Index">Домой</a></li>
-            <li><a class="dropdown-item" href="/Privacy">Правила слушания</a></li>
-            <li><a class="dropdown-item" href="/Authors/Index">Исполнители</a></li>
-            <li><a class="dropdown-item" href="/Albums/Index">Альбомы</a></li>
-        </ul>
-    </div>
-</div>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Меню
+                    </button>   
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="/Index">Домой</a></li>
+                        <li><a class="dropdown-item" href="/Privacy">Правила слушания</a></li>
+                        <li><a class="dropdown-item" href="/Authors/Index">Исполнители</a></li>
+                        <li><a class="dropdown-item" href="/Albums/Index">Альбомы</a></li>
+                    </ul>
+                </div>
+            </div>
 
 
         </div>
@@ -46,13 +46,7 @@
     </main>
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        
-        &copy; 2023 - БебраМузыка - Все права защищены - <a asp-area="" asp-page="/Privacy">Правила</a>
-    </div>
-    
-</footer>
+
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -60,4 +54,11 @@
 
 @await RenderSectionAsync("Scripts", required: false)
 </body>
+<footer class="border-top footer text-muted">
+    <div class="container">
+        
+        &copy; 2023 - БебраМузыка - Все права защищены - <a asp-area="" asp-page="/Privacy">Правила</a>
+    </div>
+    
+</footer>
 </html>
