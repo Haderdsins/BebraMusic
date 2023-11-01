@@ -24,4 +24,8 @@
       <_ContentIncludedByDefault Remove="Pages\Albums\Index.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="wwwroot\TrekForSmile.mp3" />
+    </ItemGroup>
+
 </Project>

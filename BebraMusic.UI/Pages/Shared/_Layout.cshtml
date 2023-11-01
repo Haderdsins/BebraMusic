@@ -15,27 +15,28 @@
     </div>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">БебраМузыка</a>
+            <a class="navbar-brand" asp-area="" asp-page="/Index">
+                <img src="https://i.ibb.co/5rkDHSQ/bebra.png" alt="Bebra Icon" style="width: 30px; height: 30px; margin-right: 10px;">БебраМузыка</a>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Домой</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Правила слушания</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Authors/Index">Исполнители</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Albums/Index">Альбомы</a>
-                    </li>
-                </ul>
-            </div>
+<div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            Меню
+        </button>   
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="/Index">Домой</a></li>
+            <li><a class="dropdown-item" href="/Privacy">Правила слушания</a></li>
+            <li><a class="dropdown-item" href="/Authors/Index">Исполнители</a></li>
+            <li><a class="dropdown-item" href="/Albums/Index">Альбомы</a></li>
+        </ul>
+    </div>
+</div>
+
+
         </div>
     </nav>
 </header>
@@ -47,8 +48,10 @@
 
 <footer class="border-top footer text-muted">
     <div class="container">
+        
         &copy; 2023 - БебраМузыка - Все права защищены - <a asp-area="" asp-page="/Privacy">Правила</a>
     </div>
+    
 </footer>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
