@@ -21,6 +21,10 @@
     </table>
 </div>
 <div class="p-4">
-    <a class="btn btn-primary" asp-page="/Authors/Create">Добавить</a>
+    <form method="get">
+        <input type="text" asp-for="SearchString"/>
+        <button type="submit" class="btn btn-primary">Поиск</button>
+    
+    <a class="btn btn-primary" asp-page="/Authors/Create">Добавить</a></form>
 </div>
 
