@@ -9,16 +9,26 @@
 
 <html>
 <head>
-    <title></title>
+    <title>Create Author</title>
 </head>
 <body>
-<div>
-    <form method="Post">
-        <input asp-for="Author.Id"/>
-        <input asp-for="Author.Name"/>
-        <input class="btn" type="submit" value="Add"/>
-        
-    </form>
-</div>
+    <div>
+        <form method="post">
+            <input asp-for="Author.Id"/>
+            <span asp-validation-for="Author.Id" class="text-danger"></span>
+
+            <input asp-for="Author.Name"/>
+            <span asp-validation-for="Author.Name" class="text-danger"></span>
+
+            <input class="btn" type="submit" value="Add"/>
+        <div class="text-danger">
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <p>@TempData["ErrorMessage"]</p>
+            }
+        </div>
+
+        </form>
+    </div>
 </body>
 </html>
