@@ -16,6 +16,9 @@
         <tr class="table-responsive">
             <th>Id</th>
             <th>Альбомы</th>
+            <th>Исполнитель</th>
+            <th>Жанр</th>
+            <th>Год релиза</th>
         </tr>
         </thead>
         <tbody>
@@ -24,6 +27,10 @@
             <tr class="table-responsive text-start">
                 <td>@album.Id</td>
                 <td>@album.Title</td>
+                <td>@album.Author.Name</td>
+                <td>@album.Genre.Name</td>
+                <td>@album.Year</td>
+                
             </tr>
         }
         </tbody>

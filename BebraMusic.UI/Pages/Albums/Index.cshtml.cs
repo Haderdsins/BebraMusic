@@ -2,8 +2,7 @@
 using BebraMusic.UI.DataBase.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace BebraMusic.UI.Pages.Albums
 {
@@ -22,7 +21,8 @@ namespace BebraMusic.UI.Pages.Albums
 
         public void OnGet()
         {
-            var query = _dbContext.Albums.AsQueryable();
+            var query = _dbContext.Albums.Include(x=>x.Author).Include(x=>x.Genre).AsQueryable();
+
 
             if (SearchString != null)
             {

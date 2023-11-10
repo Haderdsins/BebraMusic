@@ -55,26 +55,32 @@
 <body>
     <div>
         <form method="post">
-            <label for="Song_Id">Введите ID песни:</label>
-            <input id="Song_Id" asp-for="Song.Id"/>
-            <span asp-validation-for="Song.Id" class="text-danger"></span>
-            
             <label for="Song_Title">Введите название песни:</label>
             <input id="Song_Title" asp-for="Song.Title"/>
             <span asp-validation-for="Song.Title" class="text-danger"></span>
             
-            <label for="Song_Artist">Введите исполнителя песни:</label>
-            <input id="Song_Artist" asp-for="Song.Artist"/>
-            <span asp-validation-for="Song.Artist" class="text-danger"></span>
+            <label for="Song_Duration">Введите длительность:</label>
+            <input id="Song_Duration" asp-for="Song.Title"/>
+            <span asp-validation-for="Song.Duration" class="text-danger"></span>            
             
-            <label for="Song_Album">Введите альбом песни:</label>
-            <input id="Song_Album" asp-for="Song.Album"/>
+            <label for="Song_Artist">Выберите исполнителя:</label>
+            <select asp-for="AuthorId" asp-items="Model.Authors" required>
+            <option disabled="disabled" value="">Выберите автора</option>
+            </select>
+            <span asp-validation-for="Song.Author" class="text-danger"></span>
+            
+            <label for="Song_Album">Выберите альбом:</label>
+            <select asp-for="AlbumId" asp-items="Model.Albums" required>
+            <option disabled="disabled" value="">Выберите альбом</option>
+            </select>
             <span asp-validation-for="Song.Album" class="text-danger"></span>
             
-            <label for="Song_Genre">Введите жанр песни:</label>
-            <input id="Song_Genre" asp-for="Song.Genre"/>
+            <label for="Song_Genre">Выберите жанр:</label>
+            <select asp-for="GenreId" asp-items="Model.Genres" required>
+            <option disabled="disabled" value="">Выберите жанр</option>
+            </select>
             <span asp-validation-for="Song.Genre" class="text-danger"></span>
-            
+            <br>
             <input class="btn" type="submit" value="Вписать в историю!"/>
             <div class="text-danger">
                 @if (TempData["ErrorMessage"] != null)

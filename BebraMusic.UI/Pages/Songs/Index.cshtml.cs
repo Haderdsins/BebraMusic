@@ -2,6 +2,7 @@
 using BebraMusic.UI.DataBase.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace BebraMusic.UI.Pages.Songs
@@ -17,10 +18,10 @@ namespace BebraMusic.UI.Pages.Songs
         {
             _dbContext = dbContext;
         }
-
+        
         public void OnGet()
         {
-            var query = _dbContext.Songs.AsQueryable();
+            var query = _dbContext.Songs.Include(x=>x.Author).Include(x=>x.Genre).AsQueryable();
 
             if (SearchString != null)
             {

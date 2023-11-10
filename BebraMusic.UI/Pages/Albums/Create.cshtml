@@ -55,17 +55,14 @@
 <body>
     <div>
         <form method="post">
-            <label for="Album_Id">Введите ID:</label>
-            <input id="Album_Id" asp-for="Album.Id"/>
-            <span asp-validation-for="Album.Id" class="text-danger"></span>
 
             <label for="Album_Title">Введите название:</label>
             <input id="Album_Title" asp-for="Album.Title"/>
             <span asp-validation-for="Album.Title" class="text-danger"></span>
             
             <label for="Album_Artist">Введите исполнителя:</label>
-            <input id="Album_Artist" asp-for="Album.Artist"/>
-            <span asp-validation-for="Album.Artist" class="text-danger"></span>
+            <input id="Album_Artist" asp-for="Album.Author"/>
+            <span asp-validation-for="Album.Author" class="text-danger"></span>
 
             <input class="btn" type="submit" value="Вписать в историю!"/>
             <div class="text-danger">

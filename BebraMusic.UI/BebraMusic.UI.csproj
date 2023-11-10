@@ -29,4 +29,13 @@
       <None Include="wwwroot\TrekForSmile.mp3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Migrations\20231031143121_Initial.cs" />
+      <Compile Remove="Migrations\20231031143121_Initial.Designer.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Migrations\" />
+    </ItemGroup>
+
 </Project>

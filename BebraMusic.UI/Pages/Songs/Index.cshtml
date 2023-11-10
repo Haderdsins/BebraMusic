@@ -27,7 +27,7 @@
             <tr class="table-responsive text-start">
                 <td>@song.Id</td>
                 <td>@song.Title</td>
-                <td>@(song.Artist != null ? song.Artist.Name : "Unknown Artist")</td>
+                <td>@(song.Author != null ? song.Author.Name : "Unknown Author")</td>
                 <td>@song.Duration?.ToString("hh\\:mm\\:ss")</td>
                 <td>@(song.Genre != null ? song.Genre.Name : "Unknown Genre")</td>
             </tr>
