@@ -1,6 +1,8 @@
 ﻿@page
 @model BebraMusic.UI.Pages.Authors.Index
-
+<div class="text-center">
+    <h1>Каталог Авторов</h1>
+</div>
 <div class="p-4">
     <form method="get">
         <input type="text" asp-for="SearchString"/>
@@ -18,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach (var author in Model.Authors)
+        @foreach (var author in Model.Authors!)
         {
             <tr class="table-responsive text-start">
                 <td>@author.Id</td>

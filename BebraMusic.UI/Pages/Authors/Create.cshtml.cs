@@ -37,5 +37,6 @@ namespace BebraMusic.UI.Pages.Authors
 
             return Page();
         }
+        
     }
 }

@@ -18,4 +18,5 @@ public sealed class BebraMusicDbContext : DbContext
     {
         Database.EnsureCreated();
     }
+    
 }

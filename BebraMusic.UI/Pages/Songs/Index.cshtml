@@ -1,6 +1,8 @@
 ﻿@page
-
 @model BebraMusic.UI.Pages.Songs.Index
+<div class="text-center">
+    <h1>Каталог Музыки</h1>
+</div>
 <div class="p-4">
     <form method="get">
         <input type="text" asp-for="SearchString"/>
@@ -14,18 +16,20 @@
         <tr class="table-responsive">
             <th>Id</th>
             <th>Наименование</th>
+            <th>Исполнитель</th>
+            <th>Продолжительность</th>
+            <th>Жанр</th>
         </tr>
         </thead>
         <tbody>
-        @foreach (var song in Model.Songs)
+        @foreach (var song in Model.Songs!)
         {
             <tr class="table-responsive text-start">
                 <td>@song.Id</td>
                 <td>@song.Title</td>
-                <td>@song.Artist</td>
-                <td>@song.Duration</td>
-                <td>@song.Genre</td>
-                
+                <td>@(song.Artist != null ? song.Artist.Name : "Unknown Artist")</td>
+                <td>@song.Duration?.ToString("hh\\:mm\\:ss")</td>
+                <td>@(song.Genre != null ? song.Genre.Name : "Unknown Genre")</td>
             </tr>
         }
         </tbody>

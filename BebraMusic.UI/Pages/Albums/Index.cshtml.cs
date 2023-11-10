@@ -2,33 +2,36 @@
 using BebraMusic.UI.DataBase.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace BebraMusic.UI.Pages.Albums;
-
-public class Index : PageModel
+namespace BebraMusic.UI.Pages.Albums
 {
-    private readonly BebraMusicDbContext _dbContext;
-    
-    public IEnumerable<Album>? Albums { get; set; }
-    [BindProperty(SupportsGet = true)]
-    public string? SearchString { get; set; } 
-    public Index(BebraMusicDbContext dbContext)
+    public class Index : PageModel
     {
-        _dbContext = dbContext;
-    }
+        private readonly BebraMusicDbContext _dbContext;
 
-    public void OnGet()
-    {
-        Albums = _dbContext.Albums.ToList();
-        if (SearchString !=null)
+        public IEnumerable<Album>? Albums { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; } 
+
+        public Index(BebraMusicDbContext dbContext)
         {
-            //язык запросов LinQ - позволяет работать с коллекциями, СContains - метод позволяет сопоставлять строску со строкой в таблице, х это объект класса
-            Albums = _dbContext.Albums.Where(x => x.Title.Contains(SearchString));
+            _dbContext = dbContext;
         }
-        else
+
+        public void OnGet()
         {
-            Albums = _dbContext.Albums.ToList();
+            var query = _dbContext.Albums.AsQueryable();
+
+            if (SearchString != null)
+            {
+                // Язык запросов LinQ - позволяет работать с коллекциями, Contains - метод позволяет сопоставлять строку со строкой в таблице, x - это объект класса
+                query = query.Where(x => x.Title.Contains(SearchString));
+            }
+
+            // Добавляем сортировку по Id
+            Albums = query.OrderBy(x => x.Id).ToList();
         }
-        
     }
 }

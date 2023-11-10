@@ -3,30 +3,31 @@ using BebraMusic.UI.DataBase.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace BebraMusic.UI.Pages.Songs;
 
-public class Index : PageModel
+namespace BebraMusic.UI.Pages.Songs
 {
-    private readonly BebraMusicDbContext _dbContext;
-    public IEnumerable<Song>? Songs { get; set;}
-    [BindProperty(SupportsGet = true)]
-    public string? SearchString { get; set;}
-
-    public Index(BebraMusicDbContext dbContext)
+    public class Index : PageModel
     {
-        _dbContext = dbContext;
-    }
+        private readonly BebraMusicDbContext _dbContext;
+        public IEnumerable<Song>? Songs { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; }
 
-    public void OnGet()
-    {
-        Songs = _dbContext.Songs.ToList();
-        if (SearchString != null)
+        public Index(BebraMusicDbContext dbContext)
         {
-            Songs = _dbContext.Songs.Where(x => x.Title.Contains(SearchString));
+            _dbContext = dbContext;
         }
-        else
+
+        public void OnGet()
         {
-                Songs = _dbContext.Songs.ToList();
+            var query = _dbContext.Songs.AsQueryable();
+
+            if (SearchString != null)
+            {
+                query = query.Where(x => x.Title.Contains(SearchString));
+            }
+
+            Songs = query.OrderBy(x => x.Id).ToList();
         }
     }
 }
