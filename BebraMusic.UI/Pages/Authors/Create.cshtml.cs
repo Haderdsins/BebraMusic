@@ -2,8 +2,7 @@
 using BebraMusic.UI.DataBase.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
+
 
 namespace BebraMusic.UI.Pages.Authors
 {
@@ -21,18 +20,22 @@ namespace BebraMusic.UI.Pages.Authors
 
         public IActionResult OnPost()
         {
-            // Проверяем, существует ли артист с таким id
-            if (_dbContext.Authors.Any(a => a.Id == Author.Id))
+            var existingAuthor = _dbContext.Authors.FirstOrDefault(a => a.Id == Author.Id);
+            if (existingAuthor != null)
             {
-                TempData["ErrorMessage"] = "Артист с таким Id уже существует.";
-                return RedirectToPage();
+                TempData["ErrorMessage"] = "Такой Id уже занят.";
+            }
+            else
+            {
+                _dbContext.Add(Author);
+                _dbContext.SaveChanges();
+
+                Author = new Author();
+
+                return RedirectToPage("Index");
             }
 
-            // Если проверка прошла успешно, добавляем артиста в базу данных
-            _dbContext.Add(Author);
-            _dbContext.SaveChanges();
-
-            return RedirectToPage("Index");
+            return Page();
         }
     }
 }

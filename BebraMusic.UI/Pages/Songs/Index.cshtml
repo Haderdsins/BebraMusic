@@ -1,14 +1,13 @@
 ﻿@page
-@model BebraMusic.UI.Pages.Authors.Index
 
+@model BebraMusic.UI.Pages.Songs.Index
 <div class="p-4">
     <form method="get">
         <input type="text" asp-for="SearchString"/>
         <button type="submit" class="btn btn-primary">Поиск</button>
-        <a class="btn btn-primary ml-auto" asp-page="/Authors/Create">Добавить</a>
-    </form>
+    
+        <a class="btn btn-primary" asp-page="/Songs/Create">Добавить</a></form>
 </div>
-
 <div class="mx-4">
     <table class="table table-bordered table-striped table-hover table-sm">
         <thead class="table-dark">
@@ -18,11 +17,15 @@
         </tr>
         </thead>
         <tbody>
-        @foreach (var author in Model.Authors)
+        @foreach (var song in Model.Songs)
         {
             <tr class="table-responsive text-start">
-                <td>@author.Id</td>
-                <td>@author.Name</td>
+                <td>@song.Id</td>
+                <td>@song.Title</td>
+                <td>@song.Artist</td>
+                <td>@song.Duration</td>
+                <td>@song.Genre</td>
+                
             </tr>
         }
         </tbody>

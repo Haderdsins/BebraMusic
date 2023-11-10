@@ -1,0 +1,88 @@
+﻿@page
+@model BebraMusic.UI.Pages.Songs.Create
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Create Song</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            width: 300px; /* Ширина формы, установите значение по вашему усмотрению */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .text-danger {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form method="post">
+            <label for="Song_Id">Введите ID песни:</label>
+            <input id="Song_Id" asp-for="Song.Id"/>
+            <span asp-validation-for="Song.Id" class="text-danger"></span>
+            
+            <label for="Song_Title">Введите название песни:</label>
+            <input id="Song_Title" asp-for="Song.Title"/>
+            <span asp-validation-for="Song.Title" class="text-danger"></span>
+            
+            <label for="Song_Artist">Введите исполнителя песни:</label>
+            <input id="Song_Artist" asp-for="Song.Artist"/>
+            <span asp-validation-for="Song.Artist" class="text-danger"></span>
+            
+            <label for="Song_Album">Введите альбом песни:</label>
+            <input id="Song_Album" asp-for="Song.Album"/>
+            <span asp-validation-for="Song.Album" class="text-danger"></span>
+            
+            <label for="Song_Genre">Введите жанр песни:</label>
+            <input id="Song_Genre" asp-for="Song.Genre"/>
+            <span asp-validation-for="Song.Genre" class="text-danger"></span>
+            
+            <input class="btn" type="submit" value="Вписать в историю!"/>
+            <div class="text-danger">
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <p>@TempData["ErrorMessage"]</p>
+                }
+            </div>
+        </form>
+    </div>
+</body>
+</html>

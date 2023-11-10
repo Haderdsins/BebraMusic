@@ -1,5 +1,5 @@
 ﻿@page
-@model BebraMusic.UI.Pages.Authors.Create
+@model BebraMusic.UI.Pages.Albums.Create
 
 @{
     Layout = null;
@@ -9,7 +9,7 @@
 
 <html>
 <head>
-    <title>Create Author</title>
+    <title>Create album</title>
     <style>
         body {
             display: flex;
@@ -53,24 +53,24 @@
     </style>
 </head>
 <body>
-<div>
-    <form method="post">
-        <label for="Author_Id">Введите ID:</label>
-        <input id="Author_Id" asp-for="Author.Id"/>
-        <span asp-validation-for="Author.Id" class="text-danger"></span>
+    <div>
+        <form method="post">
+            <label for="Album_Id">Введите ID:</label>
+            <input id="Album_Id" asp-for="Album.Id"/>
+            <span asp-validation-for="Album.Id" class="text-danger"></span>
 
-        <label for="Author_Name">Введите имя автора:</label>
-        <input id="Author_Name" asp-for="Author.Name"/>
-        <span asp-validation-for="Author.Name" class="text-danger"></span>
+            <label for="Album_Title">Введите название:</label>
+            <input id="Album_Title" asp-for="Album.Title"/>
+            <span asp-validation-for="Album.Title" class="text-danger"></span>
 
-        <input class="btn" type="submit" value="Вписать в историю!"/>
-        <div class="text-danger">
-            @if (TempData["ErrorMessage"] != null)
-            {
-                <p>@TempData["ErrorMessage"]</p>
-            }
-        </div>
-    </form>
-</div>
+            <input class="btn" type="submit" value="Вписать в историю!"/>
+            <div class="text-danger">
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <p>@TempData["ErrorMessage"]</p>
+                }
+            </div>
+        </form>
+    </div>
 </body>
 </html>
