@@ -20,13 +20,14 @@
         }
 
         form {
-            width: 300px; /* Ширина формы, установите значение по вашему усмотрению */
+            width: 300px;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 8px;
         }
 
-        input {
+        input,
+        select {
             margin-bottom: 10px;
             width: 100%;
             padding: 8px;
@@ -56,15 +57,29 @@
     <div>
         <form method="post">
 
-            <label for="Album_Title">Введите название:</label>
+            <label for="Album_Title">Введите название альбома:</label>
             <input id="Album_Title" asp-for="Album.Title"/>
             <span asp-validation-for="Album.Title" class="text-danger"></span>
             
-            <label for="Album_Artist">Введите исполнителя:</label>
-            <input id="Album_Artist" asp-for="Album.Author"/>
+            <label for="Album_Year">Введите год релиза:</label>
+            <input id="Album_Year" asp-for="Album.Year"/>
+            <span asp-validation-for="Album.Year" class="text-danger"></span>            
+            
+            <label for="Song_Artist">Выберите исполнителя:</label>
+            <select asp-for="AuthorId" asp-items="Model.Authors" required>
+                <option disabled="disabled" value="">Выберите автора</option>
+            </select>
             <span asp-validation-for="Album.Author" class="text-danger"></span>
-
+            
+            <label for="Song_Genre">Выберите жанр:</label>
+            <select asp-for="GenreId" asp-items="Model.Genres" required>
+                <option disabled="disabled" value="">Выберите жанр</option>
+            </select>
+            <span asp-validation-for="Album.Genre" class="text-danger"></span>
+            <br></br>            
+            
             <input class="btn" type="submit" value="Вписать в историю!"/>
+            
             <div class="text-danger">
                 @if (TempData["ErrorMessage"] != null)
                 {

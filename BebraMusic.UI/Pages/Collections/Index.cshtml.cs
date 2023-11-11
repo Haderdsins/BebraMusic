@@ -2,15 +2,16 @@
 using BebraMusic.UI.DataBase.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
+namespace BebraMusic.UI.Pages.Collections
 
-namespace BebraMusic.UI.Pages.Authors
 {
     public class Index : PageModel
     {
         private readonly BebraMusicDbContext _dbContext;
 
-        public IEnumerable<Author>? Authors { get; set; }
+        public IEnumerable<Collection>? Collections { get; set; }
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; } 
 
@@ -21,16 +22,17 @@ namespace BebraMusic.UI.Pages.Authors
 
         public void OnGet()
         {
-            var query = _dbContext.Authors.AsQueryable();
+            var query = _dbContext.Collections.Include(x=>x.Genre).AsQueryable();
+
 
             if (SearchString != null)
             {
                 // Язык запросов LinQ - позволяет работать с коллекциями, Contains - метод позволяет сопоставлять строку со строкой в таблице, x - это объект класса
-                query = query.Where(x => x.Name.Contains(SearchString));
+                query = query.Where(x => x.Title.Contains(SearchString));
             }
 
             // Добавляем сортировку по Id
-            Authors = query.OrderBy(x => x.Id).ToList();
+            Collections = query.OrderBy(x => x.Id).ToList();
         }
     }
 }
