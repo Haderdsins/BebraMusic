@@ -23,6 +23,8 @@
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Pages\Albums\Index.cshtml" />
       <_ContentIncludedByDefault Remove="Pages\Genre\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Albums\Genre\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Albums\Genre\Index.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -32,6 +34,10 @@
     <ItemGroup>
       <Compile Remove="Migrations\20231031143121_Initial.cs" />
       <Compile Remove="Migrations\20231031143121_Initial.Designer.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Pages\Genre\Index.cshtml" />
     </ItemGroup>
 
 </Project>

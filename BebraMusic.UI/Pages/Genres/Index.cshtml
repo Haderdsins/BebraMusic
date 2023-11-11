@@ -1,0 +1,33 @@
+﻿@page
+@model Index
+
+<div class="text-center">
+    <h1>Каталог Жанров</h1>
+</div>
+<div class="p-4">
+    <form method="get">
+        <input type="text" asp-for="SearchString"/>
+        <button type="submit" class="btn btn-primary">Поиск</button>
+        <a class="btn btn-primary ml-auto" asp-page="/Genres/Create">Добавить</a>
+    </form>
+</div>
+
+<div class="mx-4">
+    <table class="table table-bordered table-striped table-hover table-sm">
+        <thead class="table-dark">
+        <tr class="table-responsive">
+            <th>Id</th>
+            <th>Название жанра</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var genre in Model.Genres!)
+        {
+            <tr class="table-responsive text-start">
+                <td>@genre.Id</td>
+                <td>@genre.Name</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

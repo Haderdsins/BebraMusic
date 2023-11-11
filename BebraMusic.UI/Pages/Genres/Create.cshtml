@@ -1,5 +1,5 @@
 ﻿@page
-@model BebraMusic.UI.Pages.Collections.Create
+@model BebraMusic.UI.Pages.Genres.Create
 
 @{
     Layout = null;
@@ -9,7 +9,7 @@
 
 <html>
 <head>
-    <title>Create collection</title>
+    <title>Create Author</title>
     <style>
         body {
             display: flex;
@@ -26,8 +26,7 @@
             border-radius: 8px;
         }
 
-        input,
-        select {
+        input {
             margin-bottom: 10px;
             width: 100%;
             padding: 8px;
@@ -56,21 +55,11 @@
 <body>
 <div>
     <form method="post">
+        <label for="Genre_Name">Введите название жанра:</label>
+        <input id="Genre_Name" asp-for="Genre.Name"/>
+        <span asp-validation-for="Genre.Name" class="text-danger"></span>
 
-        <label for="Collection_Title">Введите название сборника:</label>
-        <input id="Сollection_Title" asp-for="Collection.Title"/>
-        <span asp-validation-for="Collection.Title" class="text-danger"></span>
-            
-        <label for="Collection_Genre">Выберите жанр:</label>
-        <select asp-for="GenreId" asp-items="Model.Genres" required>
-            <option disabled="disabled" value="">Выберите жанр</option>
-        </select>
-        <span asp-validation-for="Collection.Genre" class="text-danger"></span>
-            
-        <br></br>       
-            
-        <input class="btn" type="submit" value="Создать вайбовый плейлист!"/>
-            
+        <input class="btn" type="submit" value="Добавить новый звук!"/>
         <div class="text-danger">
             @if (TempData["ErrorMessage"] != null)
             {
