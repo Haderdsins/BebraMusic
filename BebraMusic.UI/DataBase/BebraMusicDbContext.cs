@@ -20,3 +20,5 @@ public sealed class BebraMusicDbContext : DbContext
     }
     
 }
+//docker run -d -p 15432:5432 --name my_bebra_db -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres postgres:latest
+

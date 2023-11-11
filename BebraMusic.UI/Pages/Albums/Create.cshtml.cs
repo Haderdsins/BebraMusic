@@ -21,15 +21,14 @@ namespace BebraMusic.UI.Pages.Albums
         {
             var existingAlbum = _dbContext.Albums.FirstOrDefault(a => a.Id == Album.Id);
 
-            if (existingAlbum != null)
+            if (existingAlbum == null)
             {
-                TempData["ErrorMessage"] = "Такой Id уже занят.";
+                TempData["ErrorMessage"] = "Альбом не найдет.";
             }
             else
             {
                 _dbContext.Add(Album);
                 _dbContext.SaveChanges();
-                Album = new Album();
                 return RedirectToPage("Index");
             }
 

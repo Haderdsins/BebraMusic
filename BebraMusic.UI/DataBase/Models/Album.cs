@@ -10,4 +10,5 @@ public class Album
     
     public Author Author { get; set; } = null!; // Автор альбома
     public Genre Genre { get; set; } // Жанр альбома
+    public int GenreId { get; set; } // Жанр альбома
 }
